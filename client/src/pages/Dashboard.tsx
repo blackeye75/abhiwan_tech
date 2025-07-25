@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
 
   const handleDeleteTask = async (taskId: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/delete/${taskId}`, {
+      await axios.delete(`/api/tasks/delete/${taskId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -22,7 +22,7 @@ const CreateTask = () => {
 
 
     try {
-      const response = await axios.post("http://localhost:5000/api/tasks/create", {
+      const response = await axios.post("/api/tasks/create", {
         ...formData,
         userId: user?._id, // 🔑 Your current AuthContext has this
       }, { headers: { Authorization: `Bearer ${token}` } });

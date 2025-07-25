@@ -21,7 +21,7 @@ const Home = () => {
   const fetchTasks = async () => {
     try {
       const token = localStorage.getItem("token"); // or from context
-      const res = await axios.get("http://localhost:5000/api/tasks/all", {
+      const res = await axios.get("/api/tasks/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

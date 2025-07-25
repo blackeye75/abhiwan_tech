@@ -21,7 +21,7 @@ export const useUserTasks = (token: string | null) => {
 
     setLoading(true);
     try {
-      const response = await axios.get<{ tasks: Task[] }>("http://localhost:5000/api/tasks/get", {
+      const response = await axios.get<{ tasks: Task[] }>("/api/tasks/get", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -27,7 +27,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ task, onCancel }) => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/tasks/${task._id}`,
+        `/api/tasks/${task._id}`,
         { title, description, status },
         {
           headers: {
