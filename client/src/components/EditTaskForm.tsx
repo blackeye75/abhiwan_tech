@@ -41,8 +41,9 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ task, onCancel }) => {
 
       setMessage("Task updated successfully!");
       setTimeout(() => {
-        window.location.reload(); // reload to get updated task list
+        // window.location.reload(); // reload to get updated task list
         // navigate("/dashboard"); // redirect to dashboard
+        onCancel();
       }, 1000);
     } catch (err:string | any) {
       setMessage("Failed to update task.");
