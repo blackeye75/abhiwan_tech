@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface Task {
   _id: string;
@@ -12,6 +13,8 @@ interface EditTaskFormProps {
   task: Task;
   onCancel: () => void;
 }
+
+const navigate = useNavigate();
 
 const EditTaskForm: React.FC<EditTaskFormProps> = ({ task, onCancel }) => {
   const [title, setTitle] = useState(task.title);
@@ -38,7 +41,8 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ task, onCancel }) => {
 
       setMessage("Task updated successfully!");
       setTimeout(() => {
-        window.location.reload(); // reload to get updated task list
+        // window.location.reload(); // reload to get updated task list
+        navigate("/dashboard"); // redirect to dashboard
       }, 1000);
     } catch (err:string | any) {
       setMessage("Failed to update task.");

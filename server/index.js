@@ -21,17 +21,21 @@ app.use(express.json());
 
 connectDB(); // MongoDB connect
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
-  });
-}
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
+console.log(process.env.NODE_ENV);
 
+
+if (process.env.NODE_ENV === "production") {
+  const clientBuildPath = path.join(__dirname, "../client/dist");
+  app.use(express.static(clientBuildPath));
+
+  // use wildcard properly
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname,"../client","dist", "index.html"));
+  });
+}
 app.use(errorHandler); // custom error handler
 
 const PORT = process.env.PORT || 5000;
