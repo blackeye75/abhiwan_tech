@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     
     setUser(data.user);
     localStorage.setItem("user", JSON.stringify(data.user));
-    localStorage.setItem("token", JSON.stringify(data.token));
+    localStorage.setItem("token", (data.token));
   };
   const signup = async (username: string, email: string, password: string) => {
     const res = await fetch("/api/auth/signup", {
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     setUser(data.user);
     localStorage.setItem("user", JSON.stringify(data.user));
-    localStorage.setItem("token", JSON.stringify(data.token));
+    localStorage.setItem("token", (data.token));
   };
 
 
@@ -78,10 +78,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
-// Custom hook
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) throw new Error("useAuth must be used inside AuthProvider");
   return context;
 };
+
+// Custom hook

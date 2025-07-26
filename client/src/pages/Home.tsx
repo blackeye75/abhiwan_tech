@@ -28,7 +28,7 @@ const Home = () => {
         // withCredentials: true,
       });
 
-      setTasks(res.data.tasks);
+      setTasks(res.data.tasks || []);
     } catch (error) {
       console.error("Error fetching tasks:", error);
     } finally {

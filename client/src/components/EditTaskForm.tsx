@@ -14,9 +14,9 @@ interface EditTaskFormProps {
   onCancel: () => void;
 }
 
-const navigate = useNavigate();
 
 const EditTaskForm: React.FC<EditTaskFormProps> = ({ task, onCancel }) => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
   const [status, setStatus] = useState(task.status);
